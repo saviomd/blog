@@ -1,0 +1,10 @@
+title: saviomd.com/blog
+tagline: 'Blog sobre desenvolvimento front-end, design e etc'
+url: http://saviomd.github.io/blog
+baseurl: /blog
+permalink: pretty
+paginate: 10
+
+author:
+  name: 'Sávio Mendes'
+  email: savio@saviomd.com

@@ -1,0 +1,3 @@
+User-agent: *
+Sitemap: http://saviomd.com/blog/sitemap.xml
+Disallow: README.md
