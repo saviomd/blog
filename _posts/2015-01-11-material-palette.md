@@ -4,5 +4,5 @@ title: 'Material Palette'
 tags: [Cores, Design]
 ---
 
-Gerador de paletas p/ material design.<br>
+Gerador de paleta de cores no estilo do material design.<br>
 <http://www.materialpalette.com>
