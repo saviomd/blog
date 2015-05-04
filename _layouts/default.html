@@ -11,6 +11,15 @@
 				{{ page.title }} - {{ site.title }}
 			{% endif %}
 		</title>
+		<meta name=description content="
+			{% if page.title == "Home" %}
+				{% for tag in site.tags %}
+					{{ tag | first }},
+				{% endfor %}
+			{% else %}
+				{{ page.tags }}
+			{% endif %}
+		">
 		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl }}/atom.xml">
