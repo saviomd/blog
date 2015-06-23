@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'The UX Reader'
-tags: [Design, Livro, UX]
+tags: [Design, Livros, UX]
 ---
 
 Livro gratuito produzido pelo MailChimp.<br>

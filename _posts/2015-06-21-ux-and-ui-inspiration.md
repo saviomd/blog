@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'UX & UI Inspiration'
+title: 'UX &amp; UI Inspiration'
 tags: [Design]
 ---
 
