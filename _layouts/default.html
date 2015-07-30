@@ -14,13 +14,15 @@
 				{{ page.title }} - {{ site.title }}
 			{% endif %}
 		</title>
-		<meta name=description content="
-			{% if page.title == "Home" %}
+		<meta name="description" content="
+			{% if page.title == "Home" or page.title == "Arquivo" %}
 				{% for tag in site.tags %}
 					{{ tag | first }},
 				{% endfor %}
 			{% else %}
-				{{ page.tags }}
+				{% for tag in page.tags %}
+					{{ tag }},
+				{% endfor %}
 			{% endif %}
 		">
 		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
