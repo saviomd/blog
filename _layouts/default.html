@@ -25,7 +25,7 @@
 				{% endfor %}
 			{% endif %}
 		">
-		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+		<link rel="stylesheet" href="{{ site.baseurl }}/vendor/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="{{ site.baseurl }}/css/style.css">
 		<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl }}/atom.xml">
 		<script>
@@ -59,8 +59,8 @@
 				&copy; 2009-{{ site.time | date: '%Y' }} <a href="http://saviomd.com/">saviomd.com</a>
 			</footer>
 		</div>
-		<script src="/lib/js/jquery.min.js"></script>
-		<script src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<script src="{{ site.baseurl }}/vendor/jquery.min.js"></script>
+		<script src="{{ site.baseurl }}/vendor/bootstrap/js/bootstrap.min.js"></script>
 		<script src="{{ site.baseurl }}/js/scripts.js"></script>
 		<script>
 			if (location.search.indexOf('a=0') === -1){
