@@ -7,7 +7,7 @@ body {
 }
 
 .footer {
-	background: url(https://avatar-ssl.xboxlive.com/avatar/saviomd/avatar-body.png) no-repeat -20px -50px;
+	background: url(https://avatar-ssl.xboxlive.com/avatar/saviomd/avatar-body.png) no-repeat 0 -40px;
 	border-bottom: 1px solid #eee;
-	padding: 0 0 20px 120px;
+	padding: 0 0 20px 140px;
 }
