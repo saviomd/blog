@@ -1,0 +1,9 @@
+{
+	"extends": "xo",
+	"env": {
+		"browser": true,
+		"es6": false,
+		"jquery": true,
+		"node": false
+	}
+}

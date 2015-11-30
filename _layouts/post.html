@@ -2,26 +2,23 @@
 layout: default
 ---
 
-<div class="panel panel-default">
-	<div class="panel-body">
-		<h1>{{ page.title }}</h1>
-		<small>{{ page.date | date_to_string }}</small>
-		<div>
-			{{ content }}
-		</div>
-		<ul class="list-inline">
-			{% for tag in page.tags %}
-			<li class="badge">{{tag}}</li>
-			{% endfor %}
-		</ul>
+<div class="post m-b p-a">
+	<h1 class="post__title">{{ page.title }}</h1>
+	<div class="post__date">{{ page.date | date_to_string }}</div>
+	<div class="post__content">
+		{{ content }}
 	</div>
+	<ul class="list-inline m-b-0">
+		{% for tag in page.tags %}
+		<li class="post__tag">{{tag}}</li>
+		{% endfor %}
+	</ul>
 </div>
 
-<div class="row">
+<div class="row m-b">
 	{% if page.next %}
 	<div class="col-xs-9">
-		<a href="{{ site.baseurl }}{{ page.next.url }}">
-			<i class="glyphicon glyphicon-chevron-left"></i>
+		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}">
 			{{ page.next.title }}
 		</a>
 	</div>
@@ -29,17 +26,11 @@ layout: default
 
 	{% if page.previous %}
 	<div class="col-xs-9 pull-right text-right">
-		<a href="{{ site.baseurl }}{{ page.previous.url }}">
+		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}">
 			{{ page.previous.title }}
-			<i class="glyphicon glyphicon-chevron-right"></i>
 		</a>
 	</div>
 	{% endif %}
 </div>
 
-<hr>
-<div class="row">
-	<div class="col-xs-6 col-xs-offset-3">
-		<a href="{{ site.baseurl }}/arquivo/" class="btn btn-primary btn-lg btn-block">Arquivo</a>
-	</div>
-</div>
+{% include link-archive.html %}

@@ -1,0 +1,33 @@
+body {
+	font-size: 18px;
+	word-wrap: break-word;
+}
+
+a {
+	color: #900;
+	transition: 0.3s;
+}
+
+a:focus,
+a:hover {
+	color: #c00;
+}
+
+.btn-primary {
+	background: #900;
+	border-color: #900;
+}
+
+.btn-primary.active,
+.btn-primary.focus,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover,
+.open > .btn-primary.dropdown-toggle {
+	background: #c00;
+	border-color: #c00;
+}
+
+.container {
+	max-width: 600px;
+}

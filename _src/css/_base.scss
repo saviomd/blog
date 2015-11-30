@@ -1,0 +1,13 @@
+.title-page {
+	font-size: 24px;
+}
+
+.link-post-next:before {
+	content: "<";
+	font-weight: 600;
+}
+
+.link-post-previous:after {
+	content: ">";
+	font-weight: 600;
+}

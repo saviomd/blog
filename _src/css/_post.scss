@@ -1,0 +1,27 @@
+.post {
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.post__title {
+	font-size: 24px;
+	margin: 0;
+}
+
+.post__title--archive {
+	display: inline;
+	font-size: 18px;
+	font-weight: 400;
+}
+
+.post__date {
+	font-size: 12px;
+}
+
+.post__tag {
+	background: #ddd;
+	border-radius: 20px;
+	display: inline-block;
+	font-size: 12px;
+	padding: 2px;
+}

@@ -3,11 +3,32 @@ layout: default
 title: Arquivo
 ---
 
-{% for post in site.posts %}
-<div class="panel panel-default">
-	<div class="panel-body">
-		<span>{{ post.date | date_to_string }}</span>
-		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+<h1 class="title-page">Arquivo</h1>
+
+<div class="m-b">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-6">
+			<button class="btn btn-primary btn-block js-btn-tag-list" type="button" data-toggle="collapse" data-target="#collapse-tag-list">
+				Tags: <span class="js-tag-active">Todas</span>
+			</button>
+		</div>
+	</div>
+	<div class="collapse" id="collapse-tag-list">
+		<div class="tag-list card m-b-0">
+			<div class="card-block"></div>
+		</div>
 	</div>
 </div>
+
+{% for post in site.posts %}
+<div class="post m-b p-a" data-tags="{% for tag in post.tags %}{{tag}},{% endfor %}">
+	<span class="post__date">{{ post.date | date_to_string }}</span>
+	<h2 class="post__title post__title--archive">
+		<a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+	</h2>
+</div>
 {% endfor %}
+
+<script>
+	var tags = [{% for tag in site.tags %}'{{ tag | first }}',{% endfor %}];
+</script>

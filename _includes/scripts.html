@@ -1,0 +1,17 @@
+{% if site.dev %}
+<script src="{{ site.baseurl }}/js/vendor.js"></script>
+<script src="{{ site.baseurl }}/js/blog.js"></script>
+{% else %}
+<script src="{{ site.baseurl }}/js/vendor.min.js"></script>
+<script src="{{ site.baseurl }}/js/blog.min.js"></script>
+{% endif %}
+<script>
+if (location.search.indexOf('a=0') === -1) {
+	var _mfq = _mfq || [];
+	(function () {
+		var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+		mf.src = "//cdn.mouseflow.com/projects/420e55c5-735c-4417-a87b-1d0f60f73ff6.js";
+		document.getElementsByTagName("head")[0].appendChild(mf);
+	})();
+}
+</script>

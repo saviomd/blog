@@ -1,0 +1,33 @@
+.header {
+	background: #900 linear-gradient(to right, #900, #600);
+	height: 38px;
+}
+
+.header__title {
+	color: #fff !important;
+	display: inline-block;
+	font: bold 26px/1 Verdana, Geneva, sans-serif;
+	margin: 0;
+}
+
+.header__title:focus,
+.header__title:hover {
+	text-decoration: none;
+}
+
+@include media-breakpoint-up(md) {
+	.header {
+		height: 50px;
+	}
+
+	.header__title {
+		font-size: 40px;
+		text-transform: lowercase;
+	}
+
+	.header__title:focus,
+	.header__title:hover {
+		text-shadow: 2px 2px 0 rgba(0, 0, 16, 0.5);
+		transform: rotate(-1deg) scale(1.1);
+	}
+}
