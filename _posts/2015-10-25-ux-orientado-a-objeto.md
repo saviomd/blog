@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 'UX orientado a objeto'
-tags: [Design, Arquitetura de Informação, Mobile, UX]
+tags: [Arquitetura de Informação, Design, Mobile, UX]
 ---
 
 Como ocorreu a criação da seção das eleições 2012 da CNN.com.<br>
