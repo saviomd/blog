@@ -2162,12 +2162,6 @@ a.bg-danger:focus, a.bg-danger:hover {
 animate.css
 ====================
 */
-/*!
-Animate.css - http://daneden.me/animate
-Licensed under the MIT license - http://opensource.org/licenses/MIT
-
-Copyright (c) 2015 Daniel Eden
-*/
 .animated {
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
@@ -2182,13 +2176,10 @@ Copyright (c) 2015 Daniel Eden
   -webkit-animation-duration: 2s;
           animation-duration: 2s; }
 
+.animated.flipOutX,
+.animated.flipOutY,
 .animated.bounceIn,
 .animated.bounceOut {
-  -webkit-animation-duration: .75s;
-          animation-duration: .75s; }
-
-.animated.flipOutX,
-.animated.flipOutY {
   -webkit-animation-duration: .75s;
           animation-duration: .75s; }
 
@@ -2197,7 +2188,7 @@ Copyright (c) 2015 Daniel Eden
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0); }
-  100% {
+  to {
     opacity: 1;
     -webkit-transform: none;
             transform: none; } }
@@ -2207,7 +2198,7 @@ Copyright (c) 2015 Daniel Eden
     opacity: 0;
     -webkit-transform: translate3d(-100%, 0, 0);
             transform: translate3d(-100%, 0, 0); }
-  100% {
+  to {
     opacity: 1;
     -webkit-transform: none;
             transform: none; } }
@@ -2221,7 +2212,7 @@ Copyright (c) 2015 Daniel Eden
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
             transform: translate3d(100%, 0, 0); }
-  100% {
+  to {
     opacity: 1;
     -webkit-transform: none;
             transform: none; } }
@@ -2231,7 +2222,7 @@ Copyright (c) 2015 Daniel Eden
     opacity: 0;
     -webkit-transform: translate3d(100%, 0, 0);
             transform: translate3d(100%, 0, 0); }
-  100% {
+  to {
     opacity: 1;
     -webkit-transform: none;
             transform: none; } }

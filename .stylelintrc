@@ -1,8 +1,8 @@
 {
 	"extends": "stylelint-config-suitcss",
 	"rules": {
-		"indentation": [ 2, "tab" ],
-		"selector-no-id": 2,
-		"selector-pseudo-element-colon-notation": [ 2, "single" ]
+		"indentation": "tab",
+		"selector-no-id": true,
+		"selector-pseudo-element-colon-notation": "single"
 	}
 }
