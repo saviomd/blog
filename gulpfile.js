@@ -1,9 +1,9 @@
-var autoprefixer = require('gulp-autoprefixer');
+var autoprefixer = require('autoprefixer');
 var concat = require('gulp-concat');
+var cssnano = require('cssnano');
 var del = require('del');
 var eslint = require('gulp-eslint');
 var gulp = require('gulp');
-var minifyCss = require('gulp-minify-css');
 var postcss = require('gulp-postcss');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
@@ -15,11 +15,13 @@ var uglify = require('gulp-uglify');
 configurations
 ====================
 - autoprefixer: https://github.com/postcss/autoprefixer#browsers
+- cssnano: http://cssnano.co/options/
 - eslint: https://github.com/eslint/eslint/blob/master/conf/eslint.json
 - stylelint: https://github.com/stylelint/stylelint/tree/master/src/rules
 - stylestats: https://github.com/t32k/stylestats/blob/master/assets/default.json
 */
 var autoprefixerConfig = { browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'Android >= 2'] };
+var cssnanoConfig = { autoprefixer: false, discardUnused: false, reduceIdents: false };
 var stylestatsConfig = { config: '.stylestatsrc', outfile: true, type: 'json' };
 
 /*
@@ -35,9 +37,9 @@ gulp.task('clean', function(cb) {
 gulp.task('buildCssVendor', function() {
 	return gulp.src('_src/css/vendor.scss')
 		.pipe(sass())
-		.pipe(autoprefixer(autoprefixerConfig))
+		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
 		.pipe(gulp.dest('css'))
-		.pipe(minifyCss())
+		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest('css'))
 		.pipe(stylestats(stylestatsConfig))
@@ -54,9 +56,9 @@ gulp.task('lintCssSite', function() {
 gulp.task('buildCssSite', ['lintCssSite'], function() {
 	return gulp.src('_src/css/blog.scss')
 		.pipe(sass())
-		.pipe(autoprefixer(autoprefixerConfig))
+		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
 		.pipe(gulp.dest('css'))
-		.pipe(minifyCss())
+		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest('css'))
 		.pipe(stylestats(stylestatsConfig))
