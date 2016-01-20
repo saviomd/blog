@@ -74,7 +74,6 @@ a:hover {
   .header__title:hover {
     text-shadow: 2px 2px 0 rgba(0, 0, 16, 0.5);
     -webkit-transform: rotate(-1deg) scale(1.1);
-        -ms-transform: rotate(-1deg) scale(1.1);
             transform: rotate(-1deg) scale(1.1); } }
 
 .post {
