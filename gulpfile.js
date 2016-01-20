@@ -56,11 +56,7 @@ gulp.task('buildCssSite', ['lintCssSite'], function() {
 });
 
 gulp.task('buildJsVendor', function() {
-	return gulp.src([
-			'node_modules/jquery/dist/jquery.js',
-			'node_modules/bootstrap/dist/js/bootstrap.js',
-			'node_modules/wow/dist/wow.js'
-		])
+	return gulp.src(require('./_src/js/vendor.js'))
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest('js'))
 		.pipe(uglify())
@@ -69,13 +65,7 @@ gulp.task('buildJsVendor', function() {
 });
 
 gulp.task('buildJsSite', function() {
-	return gulp.src([
-			'_src/js/_header.js',
-			'_src/js/_post.js',
-			'_src/js/_footer.js',
-			'_src/js/_tags.js',
-			'_src/js/_noGa.js'
-		])
+	return gulp.src(require('./_src/js/blog.js'))
 		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
 		.pipe(concat('blog.js'))
