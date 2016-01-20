@@ -1,28 +1,20 @@
 var autoprefixer = require('autoprefixer');
+var autoprefixerConfig = require('autoprefixer-config-saviomd');
 var concat = require('gulp-concat');
 var cssnano = require('cssnano');
+var cssnanoConfig = require('cssnano-config-saviomd');
 var del = require('del');
 var eslint = require('gulp-eslint');
+var eslintConfig = require('eslint-config-saviomd');
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var stylelint = require('stylelint');
+var stylelintConfig = require('stylelint-config-saviomd');
 var stylestats = require('gulp-stylestats');
+var stylestatsConfig = require('stylestats-config-saviomd');
 var uglify = require('gulp-uglify');
-
-/*
-configurations
-====================
-- autoprefixer: https://github.com/postcss/autoprefixer#browsers
-- cssnano: http://cssnano.co/options/
-- eslint: https://github.com/eslint/eslint/blob/master/conf/eslint.json
-- stylelint: https://github.com/stylelint/stylelint/tree/master/src/rules
-- stylestats: https://github.com/t32k/stylestats/blob/master/assets/default.json
-*/
-var autoprefixerConfig = { browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1', 'Android >= 2'] };
-var cssnanoConfig = { autoprefixer: false, discardUnused: false, reduceIdents: false };
-var stylestatsConfig = { config: '.stylestatsrc', outfile: true, type: 'json' };
 
 /*
 tasks
@@ -48,9 +40,7 @@ gulp.task('buildCssVendor', function() {
 
 gulp.task('lintCssSite', function() {
 	return gulp.src('_src/css/_*.scss')
-		.pipe(postcss([
-			stylelint()
-		]))
+		.pipe(postcss([ stylelint(stylelintConfig) ]))
 });
 
 gulp.task('buildCssSite', ['lintCssSite'], function() {
@@ -86,7 +76,7 @@ gulp.task('buildJsSite', function() {
 			'_src/js/_tags.js',
 			'_src/js/_noGa.js'
 		])
-		.pipe(eslint())
+		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
 		.pipe(concat('blog.js'))
 		.pipe(gulp.dest('js'))
