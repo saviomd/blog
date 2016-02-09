@@ -8,7 +8,7 @@ blog.post = (function () {
 			ga('send', 'event', 'Blog', 'Post', 'Título: ' + $(this).text().trim());
 		});
 
-		$('.post__content').find('a').on('click', function () {
+		$('.js-post-content').find('a').on('click', function () {
 			ga('send', 'event', 'Blog', 'Post', 'Link: ' + $(this).attr('href'));
 		});
 

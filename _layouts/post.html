@@ -5,7 +5,9 @@ layout: default
 <div class="post m-b-1 p-a-1">
 	<h1 class="post__title">{{ page.title }}</h1>
 	<div class="post__date">{{ page.date | date_to_string }}</div>
-	{{ content }}
+	<div class="js-post-content">
+		{{ content }}
+	</div>
 	<ul class="list-inline m-b-0">
 		{% for tag in page.tags %}
 		<li class="post__tag">{{tag}}</li>

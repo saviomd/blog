@@ -11,7 +11,9 @@ title: Home
 		</a>
 	</h1>
 	<div class="post__date">{{ post.date | date_to_string }}</div>
-	{{ post.content }}
+	<div class="js-post-content">
+		{{ post.content }}
+	</div>
 	<ul class="list-inline m-b-0">
 		{% for tag in post.tags %}
 		<li class="post__tag">{{tag}}</li>
