@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "version": "1.0.20160120",
+  "version": "1.0.20160209",
   "description": "Blog pessoal",
   "author": "Sávio Mendes",
   "license": "No license",
@@ -10,10 +10,10 @@
     "url": "https://github.com/saviomd/blog.git"
   },
   "dependencies": {
-    "animate.css": "daneden/animate.css#3.5.1",
+    "animate.css": "3.5.1",
     "autoprefixer-config-saviomd": "saviomd/autoprefixer-config-saviomd",
     "autoprefixer": "6.3.1",
-    "bootstrap": "twbs/bootstrap#v4.0.0-alpha",
+    "bootstrap": "4.0.0-alpha.2",
     "cssnano-config-saviomd": "saviomd/cssnano-config-saviomd",
     "cssnano": "3.4.0",
     "del": "2.2.0",
@@ -21,17 +21,18 @@
     "gulp-autoprefixer": "3.1.0",
     "gulp-concat": "2.6.0",
     "gulp-eslint": "1.1.1",
-    "gulp-postcss": "6.0.1",
+    "gulp-postcss": "6.1.0",
     "gulp-rename": "1.2.2",
-    "gulp-sass": "2.1.1",
+    "gulp-sass": "2.2.0",
     "gulp-stylestats": "1.0.0",
-    "gulp-uglify": "1.5.1",
+    "gulp-uglify": "1.5.2",
     "gulp-util": "3.0.7",
-    "gulp": "3.9.0",
-    "jquery": "jquery/jquery#1.12.0",
+    "gulp": "3.9.1",
+    "jquery": "1.12.0",
     "stylelint-config-saviomd": "saviomd/stylelint-config-saviomd",
-    "stylelint": "4.0.0",
+    "stylelint": "4.2.0",
     "stylestats-config-saviomd": "saviomd/stylestats-config-saviomd",
+    "tether": "1.1.1",
     "wow": "matthieua/WOW#1.1.2"
   }
 }
