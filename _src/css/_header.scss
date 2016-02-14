@@ -16,6 +16,7 @@
 }
 
 @include media-breakpoint-up(md) {
+
 	.header {
 		height: 50px;
 	}
@@ -30,4 +31,5 @@
 		text-shadow: 2px 2px 0 rgba(0, 0, 16, 0.5);
 		transform: rotate(-1deg) scale(1.1);
 	}
+
 }
