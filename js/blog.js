@@ -82,7 +82,6 @@ blog.tags = (function () {
 			$a.addClass('active');
 			var $posts = $('.post');
 			$posts.removeClass('hidden-xs-up');
-			console.log(tagCurrent);
 			if (tagCurrent !== 'Todas') {
 				$posts.each(function () {
 					var $post = $(this);
