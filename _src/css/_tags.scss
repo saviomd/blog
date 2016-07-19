@@ -5,9 +5,15 @@
 }
 
 .tag-list a {
+	border-radius: $spacer / 4;
 	color: #eee;
+	padding: ($spacer / 8) ($spacer / 4);
+}
+
+.tag-list a:before {
+	content: "#";
 }
 
 .tag-list .active {
-	text-decoration: underline;
+	background: #c00;
 }

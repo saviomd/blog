@@ -1,22 +1,18 @@
-/* global ga, tags */
+/* global tags */
 
+/* eslint-disable no-use-before-define */
 var blog = blog || {};
+/* eslint-enable no-use-before-define */
 
 blog.tags = (function () {
 	var $tagList = $('.tag-list');
 	if ($tagList.length) {
-		if (typeof ga !== 'undefined') {
-			$('.js-btn-tag-list').on('click', function () {
-				ga('send', 'event', 'Blog', 'Tags', 'Exibir tags');
-			});
-		}
-
 		var $tagActive = $('.js-tag-active');
 		var $tagCollapse = $('#collapse-tag-list');
 		tags.sort();
-		var htmlTagItens = '<a href="#" class="active">Todas</a>';
+		var htmlTagItens = '<a href="#" data-event-category="Blog" data-event-action="Tags" data-event-label="Todas" class="active">Todas</a>';
 		for (var i = 0, len = tags.length; i < len; i++) {
-			htmlTagItens += ', <a href="#">' + tags[i] + '</a>';
+			htmlTagItens += ' <a href="#" data-event-category="Blog" data-event-action="Tags" data-event-label="' + tags[i] + '">' + tags[i] + '</a>';
 		}
 		$tagList.find('.card-block').append(htmlTagItens);
 
@@ -37,9 +33,6 @@ blog.tags = (function () {
 						$post.addClass('hidden-xs-up');
 					}
 				});
-			}
-			if (typeof ga !== 'undefined') {
-				ga('send', 'event', 'Blog', 'Tags', tagCurrent);
 			}
 		});
 	}

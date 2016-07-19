@@ -1,10 +1,5 @@
-{% if site.dev %}
-<script src="{{ site.baseurl }}/js/vendor.js"></script>
-<script src="{{ site.baseurl }}/js/blog.js"></script>
-{% else %}
-<script src="{{ site.baseurl }}/js/vendor.min.js"></script>
-<script src="{{ site.baseurl }}/js/blog.min.js"></script>
-{% endif %}
+<script src="{{ site.baseurl }}/js/vendor{% if site.dev == false %}.min{% endif %}.js"></script>
+<script src="{{ site.baseurl }}/js/blog{% if site.dev == false %}.min{% endif %}.js"></script>
 <script>
 if (location.search.indexOf('a=0') === -1) {
 	var _mfq = _mfq || [];

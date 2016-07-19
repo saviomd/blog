@@ -1,4 +1,6 @@
+/* eslint-disable no-use-before-define */
 var blog = blog || {};
+/* eslint-enable no-use-before-define */
 
 blog.noGa = (function () {
 	if (location.search.indexOf('a=0') !== -1) {

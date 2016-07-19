@@ -1,27 +1,13 @@
 /* global ga */
 
+/* eslint-disable no-use-before-define */
 var blog = blog || {};
+/* eslint-enable no-use-before-define */
 
 blog.post = (function () {
 	if (typeof ga !== 'undefined') {
-		$('.post__title').find('a').on('click', function () {
-			ga('send', 'event', 'Blog', 'Post', 'Título: ' + $(this).text().trim());
-		});
-
 		$('.js-post-content').find('a').on('click', function () {
 			ga('send', 'event', 'Blog', 'Post', 'Link: ' + $(this).attr('href'));
-		});
-
-		$('.link-post-next').on('click', function () {
-			ga('send', 'event', 'Blog', 'Post', 'Próximo: ' + $(this).text().trim());
-		});
-
-		$('.link-post-previous').on('click', function () {
-			ga('send', 'event', 'Blog', 'Post', 'Anterior: ' + $(this).text().trim());
-		});
-
-		$('.js-btn-archive').on('click', function () {
-			ga('send', 'event', 'Blog', 'Post', 'Arquivo');
 		});
 	}
 })();

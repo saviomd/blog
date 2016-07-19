@@ -23,13 +23,8 @@
 	{% if site.noindex %}
 	<meta name="robots" content="noindex, nofollow">
 	{% endif %}
-	{% if site.dev %}
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor.css">
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog.css">
-	{% else %}
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor.min.css">
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog.min.css">
-	{% endif %}
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor{% if site.dev == false %}.min{% endif %}.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog{% if site.dev == false %}.min{% endif %}.css">
 	<link rel="shortcut icon" href="{{ site.url }}/img/favicon.png">
 	<link rel="apple-touch-icon" href="{{ site.url }}/img/apple-touch-icon.png">
 	<link rel="canonical" href="{{ site.url }}{{ page.url }}">
@@ -48,7 +43,17 @@
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 			ga('create', 'UA-22412489-1', 'auto');
+			ga('require', 'autotrack');
 			ga('send', 'pageview');
+
+			(function(h,o,t,j,a,r){
+				h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+				h._hjSettings={hjid:247241,hjsv:5};
+				a=o.getElementsByTagName('head')[0];
+				r=o.createElement('script');r.async=1;
+				r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+				a.appendChild(r);
+			})(window,document,'//static.hotjar.com/c/hotjar-','.js?sv=');
 		};
 	</script>
 </head>

@@ -1,19 +1,19 @@
 var autoprefixer = require('autoprefixer');
-var autoprefixerConfig = require('autoprefixer-config-saviomd');
+var autoprefixerConfig = require('tools-config-saviomd/autoprefixer-config');
 var concat = require('gulp-concat');
 var cssnano = require('cssnano');
-var cssnanoConfig = require('cssnano-config-saviomd');
+var cssnanoConfig = require('tools-config-saviomd/cssnano-config');
 var del = require('del');
 var eslint = require('gulp-eslint');
-var eslintConfig = require('eslint-config-saviomd');
+var eslintConfig = require('tools-config-saviomd/eslint-config');
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var stylelint = require('stylelint');
-var stylelintConfig = require('stylelint-config-saviomd');
+var stylelintConfig = require('tools-config-saviomd/stylelint-config');
 var stylestats = require('gulp-stylestats');
-var stylestatsConfig = require('stylestats-config-saviomd');
+var stylestatsConfig = require('tools-config-saviomd/stylestats-config');
 var uglify = require('gulp-uglify');
 
 /*
@@ -26,7 +26,7 @@ gulp.task('clean', function(cb) {
 		], cb)
 });
 
-gulp.task('buildCssVendor', function() {
+gulp.task('cssVendor', function() {
 	return gulp.src('_src/css/vendor.scss')
 		.pipe(sass())
 		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
@@ -38,12 +38,12 @@ gulp.task('buildCssVendor', function() {
 		.pipe(gulp.dest('css'))
 });
 
-gulp.task('lintCssSite', function() {
+gulp.task('cssSiteLint', function() {
 	return gulp.src('_src/css/_*.scss')
 		.pipe(postcss([ stylelint(stylelintConfig) ]))
 });
 
-gulp.task('buildCssSite', ['lintCssSite'], function() {
+gulp.task('cssSite', ['cssSiteLint'], function() {
 	return gulp.src('_src/css/blog.scss')
 		.pipe(sass())
 		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
@@ -55,7 +55,7 @@ gulp.task('buildCssSite', ['lintCssSite'], function() {
 		.pipe(gulp.dest('css'))
 });
 
-gulp.task('buildJsVendor', function() {
+gulp.task('jsVendor', function() {
 	return gulp.src(require('./_src/js/vendor.js'))
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest('js'))
@@ -64,7 +64,7 @@ gulp.task('buildJsVendor', function() {
 		.pipe(gulp.dest('js'))
 });
 
-gulp.task('buildJsSite', function() {
+gulp.task('jsSite', function() {
 	return gulp.src(require('./_src/js/blog.js'))
 		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
@@ -84,11 +84,11 @@ gulp.task('default', ['clean'], function(){
 });
 
 gulp.task('css', function(){
-	gulp.start('buildCssVendor', 'buildCssSite');
+	gulp.start('cssVendor', 'cssSite');
 });
 
 gulp.task('js', function(){
-	gulp.start('buildJsVendor', 'buildJsSite');
+	gulp.start('jsVendor', 'jsSite');
 });
 
 gulp.task('dev', function() {

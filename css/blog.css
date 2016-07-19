@@ -38,14 +38,15 @@ a:hover {
   content: ">";
   font-weight: 600; }
 
-.footer {
+.footer-content {
+  background: #eee; }
+
+.footer-content__body {
   background: url("https://avatar-ssl.xboxlive.com/avatar/saviomd/avatar-body.png") no-repeat 0 -40px;
-  border-top: 1px solid #ddd;
   min-height: 240px;
   padding-left: 140px; }
 
-.footer__copyright {
-  border-top: 1px solid #ddd;
+.footer-copyright {
   font-size: 12px; }
 
 .header {
@@ -57,8 +58,7 @@ a:hover {
 .header__title {
   color: #fff !important;
   display: inline-block;
-  font: bold 26px/1 Verdana, Geneva, sans-serif;
-  margin: 0; }
+  font: bold 26px/1 Verdana, Geneva, sans-serif; }
 
 .header__title:focus,
 .header__title:hover {
@@ -82,8 +82,7 @@ a:hover {
           border-radius: 5px; }
 
 .post__title {
-  font-size: 24px;
-  margin: 0; }
+  font-size: 24px; }
 
 .post__title--archive {
   display: inline;
@@ -94,12 +93,10 @@ a:hover {
   font-size: 12px; }
 
 .post__tag {
-  background: #ddd;
-  -webkit-border-radius: 20px;
-          border-radius: 20px;
-  display: inline-block;
-  font-size: 12px;
-  padding: 2px; }
+  font-size: 12px; }
+
+.post__tag:before {
+  content: "#"; }
 
 .tag-list {
   background: #900;
@@ -107,7 +104,13 @@ a:hover {
   color: #fff; }
 
 .tag-list a {
-  color: #eee; }
+  -webkit-border-radius: 0.25rem;
+          border-radius: 0.25rem;
+  color: #eee;
+  padding: 0.125rem 0.25rem; }
+
+.tag-list a:before {
+  content: "#"; }
 
 .tag-list .active {
-  text-decoration: underline; }
+  background: #c00; }

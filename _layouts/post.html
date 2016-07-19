@@ -4,13 +4,13 @@ layout: default
 
 <div class="post m-b-1 p-a-1">
 	<h1 class="post__title">{{ page.title }}</h1>
-	<div class="post__date">{{ page.date | date_to_string }}</div>
 	<div class="js-post-content">
 		{{ content }}
 	</div>
+	<div class="post__date">{{ page.date | date_to_string }}</div>
 	<ul class="list-inline m-b-0">
 		{% for tag in page.tags %}
-		<li class="post__tag">{{tag}}</li>
+		<li class="post__tag list-inline-item">{{tag}}</li>
 		{% endfor %}
 	</ul>
 </div>
@@ -18,17 +18,13 @@ layout: default
 <div class="row m-b-1">
 	{% if page.next %}
 	<div class="col-xs-9">
-		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}">
-			{{ page.next.title }}
-		</a>
+		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Próximo: {{ page.next.title }}">{{ page.next.title }}</a>
 	</div>
 	{% endif %}
 
 	{% if page.previous %}
 	<div class="col-xs-9 pull-xs-right text-xs-right">
-		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}">
-			{{ page.previous.title }}
-		</a>
+		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Anterior: {{ page.next.title }}">{{ page.previous.title }}</a>
 	</div>
 	{% endif %}
 </div>

@@ -5,7 +5,6 @@
 
 .post__title {
 	font-size: 24px;
-	margin: 0;
 }
 
 .post__title--archive {
@@ -19,9 +18,9 @@
 }
 
 .post__tag {
-	background: #ddd;
-	border-radius: 20px;
-	display: inline-block;
 	font-size: 12px;
-	padding: 2px;
+}
+
+.post__tag:before {
+	content: "#";
 }
