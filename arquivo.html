@@ -7,8 +7,8 @@ title: Arquivo
 
 <div class="m-b-1">
 	<div class="row">
-		<div class="col-xs-12 col-sm-6 col-sm-offset-6">
-			<button class="btn btn-primary btn-block js-btn-tag-list" type="button" data-toggle="collapse" data-target="#collapse-tag-list" data-event-category="Blog" data-event-action="Tags" data-event-label="Exibir tags">
+		<div class="col-xs-12 col-sm-6 offset-sm-6">
+			<button class="btn btn-primary btn-block js-btn-tag-list" type="button" data-toggle="collapse" data-target="#collapse-tag-list" ga-on="click" ga-event-category="Blog" ga-event-action="Tags" ga-event-label="Exibir tags">
 				Tags: <span class="js-tag-active">Todas</span>
 			</button>
 		</div>
@@ -24,7 +24,7 @@ title: Arquivo
 <div class="post m-b-1 p-a-1" data-tags="{% for tag in post.tags %}{{tag}},{% endfor %}">
 	<span class="post__date">{{ post.date | date_to_string }}</span>
 	<h2 class="post__title post__title--archive">
-		<a href="{{ site.baseurl }}{{ post.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Título: {{ post.title }}">{{ post.title }}</a>
+		<a href="{{ site.baseurl }}{{ post.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Título: {{ post.title }}">{{ post.title }}</a>
 	</h2>
 </div>
 {% endfor %}

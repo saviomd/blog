@@ -18,13 +18,13 @@ layout: default
 <div class="row m-b-1">
 	{% if page.next %}
 	<div class="col-xs-9">
-		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Próximo: {{ page.next.title }}">{{ page.next.title }}</a>
+		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Próximo: {{ page.next.title }}">{{ page.next.title }}</a>
 	</div>
 	{% endif %}
 
 	{% if page.previous %}
 	<div class="col-xs-9 pull-xs-right text-xs-right">
-		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Anterior: {{ page.next.title }}">{{ page.previous.title }}</a>
+		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Anterior: {{ page.next.title }}">{{ page.previous.title }}</a>
 	</div>
 	{% endif %}
 </div>

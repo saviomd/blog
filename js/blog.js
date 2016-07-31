@@ -37,9 +37,9 @@ blog.tags = (function () {
 		var $tagActive = $('.js-tag-active');
 		var $tagCollapse = $('#collapse-tag-list');
 		tags.sort();
-		var htmlTagItens = '<a href="#" data-event-category="Blog" data-event-action="Tags" data-event-label="Todas" class="active">Todas</a>';
+		var htmlTagItens = '<a href="#" ga-on="click" ga-event-category="Blog" ga-event-action="Tags" ga-event-label="Todas" class="active">Todas</a>';
 		for (var i = 0, len = tags.length; i < len; i++) {
-			htmlTagItens += ' <a href="#" data-event-category="Blog" data-event-action="Tags" data-event-label="' + tags[i] + '">' + tags[i] + '</a>';
+			htmlTagItens += ' <a href="#" ga-on="click" ga-event-category="Blog" ga-event-action="Tags" ga-event-label="' + tags[i] + '">' + tags[i] + '</a>';
 		}
 		$tagList.find('.card-block').append(htmlTagItens);
 
