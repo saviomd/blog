@@ -5,36 +5,42 @@
 {% endif %}
 
 {% if page.title == "Home" or page.title == "Arquivo" %}
-	{% for tag in site.tags %}
-		{% capture pageDescription %}{{ pageDescription }}{{ tag | first }}, {% endcapture %}
-	{% endfor %}
+	{% capture siteTags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
+	{% capture pageDescription %}{{ siteTags | split: ',' | sort | join: ', ' }}{% endcapture %}
 {% else %}
-	{% for tag in page.tags %}
-		{% capture pageDescription %}{{ pageDescription }}{{ tag }}, {% endcapture %}
-	{% endfor %}
+	{% capture pageDescription %}{{ page.date | date: "%d/%m/%Y" }} - {{ page.tags | sort | join: ', ' }}{% endcapture %}
 {% endif %}
 
 <head>
 	<meta charset="utf-8">
+	<link rel="dns-prefetch" href="//avatar-ssl.xboxlive.com">
+	<link rel="dns-prefetch" href="//cdn.mouseflow.com">
+	<link rel="dns-prefetch" href="//static.hotjar.com">
+	<link rel="dns-prefetch" href="//www.google-analytics.com">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ pageTitle }}</title>
 	<meta name="description" content="{{ pageDescription }}">
+	<meta name="author" content="Sávio Mendes">
 	{% if site.noindex %}
 	<meta name="robots" content="noindex, nofollow">
 	{% endif %}
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor{% if site.dev == false %}.min{% endif %}.css">
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog{% if site.dev == false %}.min{% endif %}.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor{% if site.minify %}.min{% endif %}.css">
+	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog{% if site.minify %}.min{% endif %}.css">
 	<link rel="shortcut icon" href="{{ site.url }}/img/favicon.png">
 	<link rel="apple-touch-icon" href="{{ site.url }}/img/apple-touch-icon.png">
 	<link rel="canonical" href="{{ site.url }}{{ page.url }}">
 	<link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.baseurl }}/atom.xml">
+	<link rel="manifest" href="{{ site.url }}/manifest.json">
+	<meta name="theme-color" content="{{ site.themeColor }}">
 	<meta name="twitter:card" content="summary">
 	<meta name="twitter:site" content="{{ site.twitter }}">
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
 	<meta property="og:title" content="{{ pageTitle }}">
 	<meta property="og:description" content="{{ pageDescription }}">
 	<meta property="og:image" content="{{ site.url }}/img/icon-256.png">
+	<meta name="msapplication-TileImage" content="img/favicon.png">
+	<meta name="msapplication-TileColor" content="{{ site.themeColor }}">
 	<script>
 		if (location.search.indexOf('a=0') === -1) {
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -42,7 +48,7 @@
 			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			ga('create', 'UA-22412489-1', 'auto', {
+			ga('create', '{{ site.googleAnalyticsUA }}', 'auto', {
 				siteSpeedSampleRate: 100
 			});
 			ga('require', 'eventTracker');

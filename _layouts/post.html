@@ -7,7 +7,7 @@ layout: default
 	<div class="js-post-content">
 		{{ content }}
 	</div>
-	<div class="post__date">{{ page.date | date_to_string }}</div>
+	<div class="post__date">{{ page.date | date: "%d/%m/%Y" }}</div>
 	<ul class="list-inline m-b-0">
 		{% for tag in page.tags %}
 		<li class="post__tag list-inline-item">{{tag}}</li>

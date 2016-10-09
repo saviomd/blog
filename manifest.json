@@ -1,0 +1,18 @@
+---
+---
+
+{
+	"short_name": "{{ site.title }}",
+	"name": "{{ site.title }}",
+	"description": "{{ site.tagline }}",
+	"icons": [
+		{
+			"src": "{{ site.url }}/img/icon-256.png",
+			"sizes": "256x256"
+		}
+	],
+	"start_url": "{{ site.url }}/",
+	"display": "browser",
+	"orientation": "portrait",
+	"theme_color": "{{ site.themeColor }}"
+}

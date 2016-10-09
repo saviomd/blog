@@ -22,7 +22,7 @@ title: Arquivo
 
 {% for post in site.posts %}
 <div class="post m-b-1 p-a-1" data-tags="{% for tag in post.tags %}{{tag}},{% endfor %}">
-	<span class="post__date">{{ post.date | date_to_string }}</span>
+	<span class="post__date">{{ post.date | date: "%d/%m/%Y" }}</span>
 	<h2 class="post__title post__title--archive">
 		<a href="{{ site.baseurl }}{{ post.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Título: {{ post.title }}">{{ post.title }}</a>
 	</h2>

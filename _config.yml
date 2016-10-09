@@ -9,6 +9,8 @@ author:
   name: 'Sávio Mendes'
   email: savio@saviomd.com
 
+themeColor: '#900'
 twitter: saviomd
-dev: false
-noindex: false
+googleAnalyticsUA: 'UA-22412489-1'
+minify: true
+noindex: true
