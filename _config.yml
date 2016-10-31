@@ -13,4 +13,4 @@ themeColor: '#900'
 twitter: saviomd
 googleAnalyticsUA: 'UA-22412489-1'
 minify: true
-noindex: true
+noindex: false
