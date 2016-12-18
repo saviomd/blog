@@ -4,7 +4,7 @@ title: Home
 ---
 
 {% for post in paginator.posts %}
-<div class="post m-b-1 p-a-1">
+<div class="post mb-1 p-1">
 	<h1 class="post__title">
 		<a href="{{ site.baseurl }}{{ post.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Título: {{ post.title }}">
 			{{ post.title }}
@@ -14,7 +14,7 @@ title: Home
 		{{ post.content }}
 	</div>
 	<div class="post__date">{{ post.date | date: "%d/%m/%Y" }}</div>
-	<ul class="list-inline m-b-0">
+	<ul class="list-inline mb-0">
 		{% for tag in post.tags %}
 		<li class="post__tag list-inline-item">{{tag}}</li>
 		{% endfor %}

@@ -2,20 +2,20 @@
 layout: default
 ---
 
-<div class="post m-b-1 p-a-1">
+<div class="post mb-1 p-1">
 	<h1 class="post__title">{{ page.title }}</h1>
 	<div class="js-post-content">
 		{{ content }}
 	</div>
 	<div class="post__date">{{ page.date | date: "%d/%m/%Y" }}</div>
-	<ul class="list-inline m-b-0">
+	<ul class="list-inline mb-0">
 		{% for tag in page.tags %}
 		<li class="post__tag list-inline-item">{{tag}}</li>
 		{% endfor %}
 	</ul>
 </div>
 
-<div class="row m-b-1">
+<div class="row mb-1">
 	{% if page.next %}
 	<div class="col-xs-9">
 		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Próximo: {{ page.next.title }}">{{ page.next.title }}</a>
@@ -23,7 +23,7 @@ layout: default
 	{% endif %}
 
 	{% if page.previous %}
-	<div class="col-xs-9 pull-xs-right text-xs-right">
+	<div class="col-xs-9 float-xs-right text-xs-right">
 		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Anterior: {{ page.next.title }}">{{ page.previous.title }}</a>
 	</div>
 	{% endif %}
