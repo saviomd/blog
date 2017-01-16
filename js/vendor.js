@@ -10242,7 +10242,7 @@ return jQuery;
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): util.js
+ * Bootstrap (v4.0.0-alpha.6): util.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10297,7 +10297,9 @@ var Util = function ($) {
 
     for (var name in TransitionEndEvent) {
       if (el.style[name] !== undefined) {
-        return { end: TransitionEndEvent[name] };
+        return {
+          end: TransitionEndEvent[name]
+        };
       }
     }
 
@@ -10344,9 +10346,8 @@ var Util = function ($) {
 
     getUID: function getUID(prefix) {
       do {
-        /* eslint-disable no-bitwise */
+        // eslint-disable-next-line no-bitwise
         prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
-        /* eslint-enable no-bitwise */
       } while (document.getElementById(prefix));
       return prefix;
     },
@@ -10361,7 +10362,7 @@ var Util = function ($) {
       return selector;
     },
     reflow: function reflow(element) {
-      new Function('bs', 'return bs')(element.offsetHeight);
+      return element.offsetHeight;
     },
     triggerTransitionEnd: function triggerTransitionEnd(element) {
       $(element).trigger(transition.end);
@@ -10374,13 +10375,7 @@ var Util = function ($) {
         if (configTypes.hasOwnProperty(property)) {
           var expectedTypes = configTypes[property];
           var value = config[property];
-          var valueType = void 0;
-
-          if (value && isElement(value)) {
-            valueType = 'element';
-          } else {
-            valueType = toType(value);
-          }
+          var valueType = value && isElement(value) ? 'element' : toType(value);
 
           if (!new RegExp(expectedTypes).test(valueType)) {
             throw new Error(componentName.toUpperCase() + ': ' + ('Option "' + property + '" provided type "' + valueType + '" ') + ('but expected type "' + expectedTypes + '".'));
@@ -10404,7 +10399,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.5): collapse.js
+ * Bootstrap (v4.0.0-alpha.6): collapse.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
@@ -10418,7 +10413,7 @@ var Collapse = function ($) {
    */
 
   var NAME = 'collapse';
-  var VERSION = '4.0.0-alpha.5';
+  var VERSION = '4.0.0-alpha.6';
   var DATA_KEY = 'bs.collapse';
   var EVENT_KEY = '.' + DATA_KEY;
   var DATA_API_KEY = '.data-api';
@@ -10444,7 +10439,7 @@ var Collapse = function ($) {
   };
 
   var ClassName = {
-    IN: 'in',
+    SHOW: 'show',
     COLLAPSE: 'collapse',
     COLLAPSING: 'collapsing',
     COLLAPSED: 'collapsed'
@@ -10456,7 +10451,7 @@ var Collapse = function ($) {
   };
 
   var Selector = {
-    ACTIVES: '.card > .in, .card > .collapsing',
+    ACTIVES: '.card > .show, .card > .collapsing',
     DATA_TOGGLE: '[data-toggle="collapse"]'
   };
 
@@ -10491,7 +10486,7 @@ var Collapse = function ($) {
     // public
 
     Collapse.prototype.toggle = function toggle() {
-      if ($(this._element).hasClass(ClassName.IN)) {
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         this.hide();
       } else {
         this.show();
@@ -10501,7 +10496,11 @@ var Collapse = function ($) {
     Collapse.prototype.show = function show() {
       var _this = this;
 
-      if (this._isTransitioning || $(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning) {
+        throw new Error('Collapse is transitioning');
+      }
+
+      if ($(this._element).hasClass(ClassName.SHOW)) {
         return;
       }
 
@@ -10509,7 +10508,7 @@ var Collapse = function ($) {
       var activesData = void 0;
 
       if (this._parent) {
-        actives = $.makeArray($(Selector.ACTIVES));
+        actives = $.makeArray($(this._parent).find(Selector.ACTIVES));
         if (!actives.length) {
           actives = null;
         }
@@ -10549,7 +10548,7 @@ var Collapse = function ($) {
       this.setTransitioning(true);
 
       var complete = function complete() {
-        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.IN);
+        $(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
 
         _this._element.style[dimension] = '';
 
@@ -10574,7 +10573,11 @@ var Collapse = function ($) {
     Collapse.prototype.hide = function hide() {
       var _this2 = this;
 
-      if (this._isTransitioning || !$(this._element).hasClass(ClassName.IN)) {
+      if (this._isTransitioning) {
+        throw new Error('Collapse is transitioning');
+      }
+
+      if (!$(this._element).hasClass(ClassName.SHOW)) {
         return;
       }
 
@@ -10591,7 +10594,7 @@ var Collapse = function ($) {
 
       Util.reflow(this._element);
 
-      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.IN);
+      $(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.SHOW);
 
       this._element.setAttribute('aria-expanded', false);
 
@@ -10659,7 +10662,7 @@ var Collapse = function ($) {
 
     Collapse.prototype._addAriaAndCollapsedClass = function _addAriaAndCollapsedClass(element, triggerArray) {
       if (element) {
-        var isOpen = $(element).hasClass(ClassName.IN);
+        var isOpen = $(element).hasClass(ClassName.SHOW);
         element.setAttribute('aria-expanded', isOpen);
 
         if (triggerArray.length) {

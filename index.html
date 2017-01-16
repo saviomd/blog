@@ -4,7 +4,7 @@ title: Home
 ---
 
 {% for post in paginator.posts %}
-<div class="post mb-1 p-1">
+<div class="post mb-3 p-3">
 	<h1 class="post__title">
 		<a href="{{ site.baseurl }}{{ post.url }}" data-event-category="Blog" data-event-action="Post" data-event-label="Título: {{ post.title }}">
 			{{ post.title }}

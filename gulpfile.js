@@ -8,6 +8,7 @@ var eslint = require('gulp-eslint');
 var eslintConfig = require('tools-config-saviomd/eslint-config');
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
+var postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var stylelint = require('stylelint');
@@ -29,7 +30,7 @@ gulp.task('clean', function(cb) {
 gulp.task('cssVendor', function() {
 	return gulp.src('_src/css/vendor.scss')
 		.pipe(sass())
-		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
+		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
@@ -46,7 +47,7 @@ gulp.task('cssSiteLint', function() {
 gulp.task('cssSite', ['cssSiteLint'], function() {
 	return gulp.src('_src/css/blog.scss')
 		.pipe(sass())
-		.pipe(postcss([ autoprefixer(autoprefixerConfig) ]))
+		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
