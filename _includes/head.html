@@ -13,12 +13,16 @@
 
 <head>
 	<meta charset="utf-8">
-	<link rel="dns-prefetch" href="//avatar-ssl.xboxlive.com">
-	<link rel="dns-prefetch" href="//cdn.mouseflow.com">
-	<link rel="dns-prefetch" href="//static.hotjar.com">
-	<link rel="dns-prefetch" href="//www.google-analytics.com">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="preconnect" href="//cdn.mouseflow.com">
+	<link rel="preconnect" href="//static.hotjar.com">
+	<link rel="preconnect" href="//www.google-analytics.com">
+	<link rel="preload" as="style" href="{{ site.baseurl }}/css/vendor{% if site.minify %}.min{% endif %}.css")
+	<link rel="preload" as="style" href="{{ site.baseurl }}/css/blog{% if site.minify %}.min{% endif %}.css")
+	<link rel="preload" as="image" href="https://avatar-ssl.xboxlive.com/avatar/saviomd/avatar-body.png")
+	<link rel="preload" as="script" href="{{ site.baseurl }}/js/vendor{% if site.minify %}.min{% endif %}.js")
+	<link rel="preload" as="script" href="{{ site.baseurl }}/js/blog{% if site.minify %}.min{% endif %}.js")
 	<title>{{ pageTitle }}</title>
 	<meta name="description" content="{{ pageDescription }}">
 	<meta name="author" content="Sávio Mendes">
