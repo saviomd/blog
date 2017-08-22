@@ -14,7 +14,7 @@ blog.tags = (function () {
 		for (var i = 0, len = tags.length; i < len; i++) {
 			htmlTagItens += ' <a href="#" ga-on="click" ga-event-category="Blog" ga-event-action="Tags" ga-event-label="' + tags[i] + '">' + tags[i] + '</a>';
 		}
-		$tagList.find('.card-block').append(htmlTagItens);
+		$tagList.find('.card-body').append(htmlTagItens);
 
 		$tagList.find('a').on('click', function (e) {
 			e.preventDefault();
@@ -25,12 +25,12 @@ blog.tags = (function () {
 			$tagList.find('a').removeClass('active');
 			$a.addClass('active');
 			var $posts = $('.post');
-			$posts.removeClass('hidden-xs-up');
+			$posts.removeClass('d-none');
 			if (tagCurrent !== 'Todas') {
 				$posts.each(function () {
 					var $post = $(this);
 					if ($post.attr('data-tags').indexOf(tagCurrent) === -1) {
-						$post.addClass('hidden-xs-up');
+						$post.addClass('d-none');
 					}
 				});
 			}
