@@ -8,7 +8,7 @@
 	{% capture siteTags %}{% for tag in site.tags %}{{ tag | first }}{% unless forloop.last %},{% endunless %}{% endfor %}{% endcapture %}
 	{% capture pageDescription %}{{ siteTags | split: ',' | sort | join: ', ' }}{% endcapture %}
 {% else %}
-	{% capture pageDescription %}{{ page.date | date: "%d/%m/%Y" }} - {{ page.tags | sort | join: ', ' }}{% endcapture %}
+	{% capture pageDescription %}{{ page.date | date: "%d/%m/%Y" }} - {{ page.tags | sort | join: ', ' }} - {{ page.title }}{% endcapture %}
 {% endif %}
 
 <head>

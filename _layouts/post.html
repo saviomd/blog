@@ -15,18 +15,49 @@ layout: default
 	</ul>
 </div>
 
-<div class="row mb-3">
+<div class="mb-3">
 	{% if page.next %}
-	<div class="col-9">
+	<div class="pr-5">
 		<a class="link-post-next" href="{{ site.baseurl }}{{ page.next.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Próximo: {{ page.next.title }}">{{ page.next.title }}</a>
 	</div>
 	{% endif %}
 
 	{% if page.previous %}
-	<div class="col-9 offset-3 text-right">
+	<div class="pl-5 text-right">
 		<a class="link-post-previous" href="{{ site.baseurl }}{{ page.previous.url }}" ga-on="click" ga-event-category="Blog" ga-event-action="Post" ga-event-label="Anterior: {{ page.next.title }}">{{ page.previous.title }}</a>
 	</div>
 	{% endif %}
 </div>
 
 {% include link-archive.html %}
+
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org",
+		"@type": "BlogPosting",
+		"author": {
+			"@type": "Person",
+			"name": "Sávio Mendes",
+			"sameAs": "http://saviomd.com/"
+		},
+		"datePublished": "{{ page.date | date: "%Y-%m-%d" }}",
+		"headline": "{{ page.tags | sort | join: ', ' }}",
+		"image": {
+			"@type": "ImageObject",
+			"height": 700,
+			"url": "http://saviomd.com/blog/img/icon-256.png",
+			"width": 700
+		},
+		"name": "{{ page.title }}",
+		"publisher": {
+			"@type": "Organization",
+			"name": "saviomd.com",
+			"logo": {
+				"@type": "ImageObject",
+				"height": 50
+				"url": "http://saviomd.com/img/favicon.png",
+				"width": 50,
+			}
+		}
+	}
+</script>
