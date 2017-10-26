@@ -1,6 +1,6 @@
 title: saviomd.com/blog
 tagline: 'Blog sobre desenvolvimento front-end, design e etc'
-url: http://saviomd.com/blog
+url: https://saviomd.com/blog
 baseurl: /blog
 permalink: pretty
 paginate: 10

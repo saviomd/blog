@@ -15,14 +15,23 @@ a:hover {
   background: #900;
   border-color: #900; }
 
-.btn-primary.active,
-.btn-primary.focus,
-.btn-primary:active,
 .btn-primary:focus,
-.btn-primary:hover,
-.open > .btn-primary.dropdown-toggle {
+.btn-primary.focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #fff; }
+
+.btn-primary:hover {
   background: #c00;
-  border-color: #c00; }
+  border-color: #c00;
+  color: #fff; }
+
+.btn-primary:not([disabled]):not(.disabled).active,
+.btn-primary:not([disabled]):not(.disabled):active,
+.show > .btn-primary.dropdown-toggle {
+  background: #c00;
+  border-color: #c00;
+  color: #fff; }
 
 .container {
   max-width: 600px; }
