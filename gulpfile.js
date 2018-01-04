@@ -29,7 +29,7 @@ gulp.task('clean', function(cb) {
 
 gulp.task('cssVendor', function() {
 	return gulp.src('_src/css/vendor.scss')
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
@@ -46,7 +46,7 @@ gulp.task('cssSiteLint', function() {
 
 gulp.task('cssSite', ['cssSiteLint'], function() {
 	return gulp.src('_src/css/blog.scss')
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
@@ -69,6 +69,7 @@ gulp.task('jsSite', function() {
 	return gulp.src(require('./_src/js/blog.js'))
 		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
+		.pipe(eslint.failOnError())
 		.pipe(concat('blog.js'))
 		.pipe(gulp.dest('js'))
 		.pipe(uglify())
