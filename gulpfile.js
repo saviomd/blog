@@ -1,6 +1,7 @@
 var autoprefixer = require('autoprefixer');
 var autoprefixerConfig = require('tools-config-saviomd/autoprefixer-config');
 var babel = require('gulp-babel');
+var babelConfig = require('tools-config-saviomd/babel-config');
 var concat = require('gulp-concat');
 var cssnano = require('cssnano');
 var cssnanoConfig = require('tools-config-saviomd/cssnano-config');
@@ -27,24 +28,12 @@ gulp.task('clean', function(cb) {
 		], cb)
 });
 
-gulp.task('cssVendor', function() {
-	return gulp.src('_src/css/vendor.scss')
-		.pipe(sourcemaps.init())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
-		.pipe(gulp.dest('css'))
-		.pipe(postcss([ cssnano(cssnanoConfig) ]))
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('css'))
-});
-
-gulp.task('cssSiteLint', function() {
+gulp.task('cssLint', function() {
 	return gulp.src('_src/css/_*.scss')
 		.pipe(postcss([ stylelint(stylelintConfig) ]))
 });
 
-gulp.task('cssSite', ['cssSiteLint'], function() {
+gulp.task('css', ['cssLint'], function() {
 	return gulp.src('_src/css/blog.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
@@ -56,24 +45,17 @@ gulp.task('cssSite', ['cssSiteLint'], function() {
 		.pipe(gulp.dest('css'))
 });
 
-gulp.task('jsVendor', function() {
-	return gulp.src(require('./_src/js/vendor.js'))
-		.pipe(sourcemaps.init())
-		.pipe(concat('vendor.js'))
-		.pipe(gulp.dest('js'))
-		.pipe(uglify())
-		.pipe(rename({ suffix: '.min' }))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('js'))
-});
-
-gulp.task('jsSite', function() {
-	return gulp.src(require('./_src/js/blog.js'))
-		.pipe(sourcemaps.init())
+gulp.task('jsLint', function() {
+	return gulp.src('_src/js/_*.js')
 		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError())
-		.pipe(babel({ presets: ['env'] }))
+});
+
+gulp.task('js', ['jsLint'], function() {
+	return gulp.src(require('./_src/js/blog.js'))
+		.pipe(sourcemaps.init())
+		.pipe(babel(babelConfig))
 		.pipe(concat('blog.js'))
 		.pipe(gulp.dest('js'))
 		.pipe(uglify())
@@ -88,14 +70,6 @@ build tasks
 */
 gulp.task('default', ['clean'], function() {
 	gulp.start('css', 'js');
-});
-
-gulp.task('css', function() {
-	gulp.start('cssVendor', 'cssSite');
-});
-
-gulp.task('js', function() {
-	gulp.start('jsVendor', 'jsSite');
 });
 
 gulp.task('dev', function() {

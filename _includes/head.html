@@ -18,10 +18,8 @@
 	<link rel="preconnect" href="//cdn.mouseflow.com">
 	<link rel="preconnect" href="//static.hotjar.com">
 	<link rel="preconnect" href="//www.google-analytics.com">
-	<link rel="preload" as="style" href="{{ site.baseurl }}/css/vendor{% if site.minify %}.min{% endif %}.css">
 	<link rel="preload" as="style" href="{{ site.baseurl }}/css/blog{% if site.minify %}.min{% endif %}.css">
 	<link rel="preload" as="image" href="https://avatar-ssl.xboxlive.com/avatar/saviomd/avatar-body.png">
-	<link rel="preload" as="script" href="{{ site.baseurl }}/js/vendor{% if site.minify %}.min{% endif %}.js">
 	<link rel="preload" as="script" href="{{ site.baseurl }}/js/blog{% if site.minify %}.min{% endif %}.js">
 	<title>{{ pageTitle }}</title>
 	<meta name="description" content="{{ pageDescription }}">
@@ -29,7 +27,6 @@
 	{% if site.noindex %}
 	<meta name="robots" content="noindex, nofollow">
 	{% endif %}
-	<link rel="stylesheet" href="{{ site.baseurl }}/css/vendor{% if site.minify %}.min{% endif %}.css">
 	<link rel="stylesheet" href="{{ site.baseurl }}/css/blog{% if site.minify %}.min{% endif %}.css">
 	<link rel="shortcut icon" href="{{ site.url }}/img/favicon.png">
 	<link rel="apple-touch-icon" href="{{ site.url }}/img/apple-touch-icon.png">
