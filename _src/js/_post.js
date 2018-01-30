@@ -1,7 +1,7 @@
 /* global ga */
 
 /* eslint-disable no-use-before-define */
-var blog = blog || {};
+const blog = blog || {};
 /* eslint-enable no-use-before-define */
 
 blog.post = (function () {

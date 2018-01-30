@@ -1,5 +1,6 @@
 var autoprefixer = require('autoprefixer');
 var autoprefixerConfig = require('tools-config-saviomd/autoprefixer-config');
+var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var cssnano = require('cssnano');
 var cssnanoConfig = require('tools-config-saviomd/cssnano-config');
@@ -11,10 +12,9 @@ var postcss = require('gulp-postcss');
 var postcssFlexbugsFixes = require('postcss-flexbugs-fixes');
 var rename = require('gulp-rename');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var stylelint = require('stylelint');
 var stylelintConfig = require('tools-config-saviomd/stylelint-config');
-var stylestats = require('gulp-stylestats');
-var stylestatsConfig = require('tools-config-saviomd/stylestats-config');
 var uglify = require('gulp-uglify');
 
 /*
@@ -29,13 +29,13 @@ gulp.task('clean', function(cb) {
 
 gulp.task('cssVendor', function() {
 	return gulp.src('_src/css/vendor.scss')
+		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulp.dest('css'))
-		.pipe(stylestats(stylestatsConfig))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('css'))
 });
 
@@ -46,34 +46,39 @@ gulp.task('cssSiteLint', function() {
 
 gulp.task('cssSite', ['cssSiteLint'], function() {
 	return gulp.src('_src/css/blog.scss')
+		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(postcss([ autoprefixer(autoprefixerConfig), postcssFlexbugsFixes() ]))
 		.pipe(gulp.dest('css'))
 		.pipe(postcss([ cssnano(cssnanoConfig) ]))
 		.pipe(rename({ suffix: '.min' }))
-		.pipe(gulp.dest('css'))
-		.pipe(stylestats(stylestatsConfig))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('css'))
 });
 
 gulp.task('jsVendor', function() {
 	return gulp.src(require('./_src/js/vendor.js'))
+		.pipe(sourcemaps.init())
 		.pipe(concat('vendor.js'))
 		.pipe(gulp.dest('js'))
 		.pipe(uglify())
 		.pipe(rename({ suffix: '.min' }))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('js'))
 });
 
 gulp.task('jsSite', function() {
 	return gulp.src(require('./_src/js/blog.js'))
+		.pipe(sourcemaps.init())
 		.pipe(eslint(eslintConfig))
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError())
+		.pipe(babel({ presets: ['env'] }))
 		.pipe(concat('blog.js'))
 		.pipe(gulp.dest('js'))
 		.pipe(uglify())
 		.pipe(rename({ suffix: '.min' }))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('js'))
 });
 
